@@ -12,14 +12,14 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "timewise — softly plan your days" },
-      { name: "description", content: "A soft, romanticized study planner for the little pockets of time." },
+      { title: "timewise — plan your brightest study days" },
+      { name: "description", content: "Plan your study time, check off every win, and get a bright boost whenever you need one." },
     ],
     // No icon link: the platform adds the app's logo when serving.
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" },
       { rel: "stylesheet", href: appCss },
     ],
   }),

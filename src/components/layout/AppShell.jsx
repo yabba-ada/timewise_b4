@@ -15,7 +15,7 @@ export default function AppShell() {
       <Backdrop />
       <aside className="glass fixed left-4 top-4 bottom-4 z-30 hidden w-60 flex-col rounded-[28px] p-5 md:flex">
         <Logo />
-        <p className="mt-1 text-xs text-rose-950/45">gentle plans, softer days</p>
+        <p className="mt-1 text-xs text-rose-950/45">plan smart, feel great</p>
         <div className="mt-8">
           <NavItems id="side" vertical />
         </div>

@@ -30,7 +30,7 @@ export default function FocusTimer({ task, onClose, onFinish }) {
       <DialogContent className="rounded-3xl text-center">
         <DialogHeader>
           <DialogTitle className="text-center">{task?.title}</DialogTitle>
-          <DialogDescription className="text-center">Stay with this one small step ♡</DialogDescription>
+          <DialogDescription className="text-center">You're in the zone — keep going.</DialogDescription>
         </DialogHeader>
         <div className="relative mx-auto h-56 w-56 float">
           <svg viewBox="0 0 200 200" className="h-full w-full -rotate-90">
@@ -54,7 +54,7 @@ export default function FocusTimer({ task, onClose, onFinish }) {
             {running ? "Pause" : "Resume"}
           </Button>
           <Button onClick={() => onFinish(Math.max(1, Math.round(secs / 60)))} className="btn-glow h-11 rounded-2xl text-white">
-            Finish ♡
+            Finish
           </Button>
         </div>
       </DialogContent>

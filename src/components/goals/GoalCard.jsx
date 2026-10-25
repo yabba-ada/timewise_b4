@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, Trash2 } from "lucide-react";
+import { Target, Trash2 } from "lucide-react";
 
 export default function GoalCard({ goal, tasks, onDelete }) {
   const linked = tasks.filter((t) => t.goal_id === goal.id);
@@ -12,7 +12,7 @@ export default function GoalCard({ goal, tasks, onDelete }) {
         <div>
           <span className="rounded-full bg-rose-100 px-2.5 py-1 text-xs font-semibold text-primary">{goal.term === "long" ? "Long-term" : "Short-term"}</span>
           <h3 className="mt-2 flex items-center gap-2 text-lg font-semibold">
-            <Heart className="h-4 w-4 shrink-0 text-rose-300" fill="currentColor" strokeWidth={1.25} />
+            <Target className="h-4 w-4 shrink-0 text-rose-300" strokeWidth={1.75} />
             {goal.title}
           </h3>
           {goal.description && <p className="text-sm text-pink-900/60">{goal.description}</p>}

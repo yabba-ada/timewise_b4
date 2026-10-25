@@ -15,7 +15,7 @@ import TaskForm from "@/components/tasks/TaskForm";
 
 export const Route = createFileRoute("/_authed/tasks")({
   ssr: false,
-  head: () => ({ meta: [{ title: "Tasks & Planner — Moment" }] }),
+  head: () => ({ meta: [{ title: "Tasks & Planner — timewise" }] }),
   component: TasksPage,
 });
 
@@ -33,7 +33,7 @@ function TasksPage() {
   async function save(data) {
     if (editing) await base44.entities.Task.update(editing.id, data);
     else await base44.entities.Task.create({ ...data, status: "todo" });
-    toast.success(editing ? "Task updated" : "Task added ♡");
+    toast.success(editing ? "Task updated" : "Task added!");
     setFormOpen(false);
     reload();
   }
@@ -46,7 +46,7 @@ function TasksPage() {
 
   return (
     <div>
-      <PageHeader title="Tasks & Planner" subtitle="Soft steps, one at a time.">
+      <PageHeader title="Tasks & Planner" subtitle="Knock them out, one at a time.">
         <Button onClick={() => { setEditing(null); setFormOpen(true); }} className="btn-glow rounded-2xl text-white">
           <Plus className="mr-1 h-4 w-4" /> New
         </Button>
@@ -59,7 +59,7 @@ function TasksPage() {
       {loading ? (
         <div className="space-y-3">{[0, 1, 2].map((i) => <div key={i} className="glass h-20 animate-pulse rounded-3xl" />)}</div>
       ) : shown.length === 0 ? (
-        <EmptyState title={tab === "done" ? "Nothing finished yet" : "Nothing here yet"} text={tab === "done" ? "Complete a task and it'll settle here." : "Add your first task and let your planner fill up softly."} />
+        <EmptyState title={tab === "done" ? "No wins logged yet" : "Your list is clear!"} text={tab === "done" ? "Finish a task and it'll show up here." : "Add your first task and start checking things off today."} />
       ) : (
         <div className="space-y-3">
           <AnimatePresence>

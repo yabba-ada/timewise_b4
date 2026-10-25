@@ -36,7 +36,7 @@ function Body({ onSubmit }) {
         <Label>Target date</Label>
         <Input type="date" value={f.target_date} onChange={set("target_date")} className="rounded-xl" />
       </div>
-      <Button type="submit" disabled={saving || !f.title.trim()} className="btn-glow h-11 w-full rounded-2xl text-white">{saving ? "Saving..." : "Add goal ♡"}</Button>
+      <Button type="submit" disabled={saving || !f.title.trim()} className="btn-glow h-11 w-full rounded-2xl text-white">{saving ? "Saving..." : "Add goal"}</Button>
     </form>
   );
 }

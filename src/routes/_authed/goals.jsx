@@ -13,7 +13,7 @@ import GoalForm from "@/components/goals/GoalForm";
 
 export const Route = createFileRoute("/_authed/goals")({
   ssr: false,
-  head: () => ({ meta: [{ title: "Goals — Moment" }] }),
+  head: () => ({ meta: [{ title: "Goals — timewise" }] }),
   component: GoalsPage,
 });
 
@@ -24,7 +24,7 @@ function GoalsPage() {
 
   async function add(data) {
     await base44.entities.Goal.create(data);
-    toast.success("Goal added ♡");
+    toast.success("Goal added!");
     setOpen(false);
     reload();
   }
@@ -36,13 +36,13 @@ function GoalsPage() {
 
   return (
     <div>
-      <PageHeader title="Goals" subtitle="Little by little, you're getting somewhere.">
+      <PageHeader title="Goals" subtitle="Big goals, broken into wins.">
         <Button onClick={() => setOpen(true)} className="btn-glow rounded-2xl text-white"><Plus className="mr-1 h-4 w-4" /> New</Button>
       </PageHeader>
       {loading ? (
         <div className="glass h-32 animate-pulse rounded-3xl" />
       ) : goals.length === 0 ? (
-        <EmptyState title="Where are you headed?" text="Add a short- or long-term goal, then link tasks to watch your progress bloom." />
+        <EmptyState title="What are you aiming for?" text="Add a short- or long-term goal, link tasks, and watch your progress climb." />
       ) : (
         <div className="space-y-4">
           <AnimatePresence>

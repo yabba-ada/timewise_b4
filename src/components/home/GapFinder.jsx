@@ -44,7 +44,7 @@ export default function GapFinder({ tasks, onStart }) {
         <h2 className="mb-3 text-lg font-semibold">How much time do you have right now?</h2>
         <TimePicker value={available} onChange={setAvailable} />
         <Button onClick={() => setSearched(true)} className="btn-glow mt-4 h-12 w-full rounded-2xl text-base text-white">
-          <Wand2 className="mr-2 h-4 w-4" /> Find my next step
+          <Wand2 className="mr-2 h-4 w-4" /> Find my best next step
         </Button>
       </div>
       {searched && pick && (
@@ -52,7 +52,7 @@ export default function GapFinder({ tasks, onStart }) {
       )}
       {searched && !pick && <QuickActivityCard available={available} hasTasks={ranked.length > 0} />}
       {searched && ranked.length === 0 && (
-        <p className="text-center text-sm"><Link to="/tasks" className="font-semibold text-pink-600 underline">Add a task</Link> to get personal picks.</p>
+        <p className="text-center text-sm"><Link to="/tasks" className="font-semibold text-primary underline">Add a task</Link> and I'll pick for you.</p>
       )}
     </div>
   );

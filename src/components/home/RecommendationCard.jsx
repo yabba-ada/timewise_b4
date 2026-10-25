@@ -7,8 +7,8 @@ export default function RecommendationCard({ pick, explanation, loadingExplain, 
   const { task, minutes, adjusted } = pick;
   return (
     <motion.div key={task.id} initial={{ opacity: 0, scale: 0.9, rotate: -1 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 200, damping: 18 }} className="glass relative overflow-hidden rounded-3xl p-6">
-      <span className="absolute right-5 top-4 text-2xl text-rose-200">❀</span>
-      <p className="text-xs font-semibold uppercase tracking-widest text-pink-500">Your next step</p>
+      <span className="absolute right-5 top-4 text-2xl text-rose-200">✦</span>
+      <p className="text-xs font-semibold uppercase tracking-widest text-primary">Do this next</p>
       <h2 className="mt-1 text-2xl font-semibold">{task.title}</h2>
       <div className="mt-3 flex flex-wrap gap-1.5 text-xs font-semibold">
         <span className="rounded-full bg-rose-100 px-2.5 py-1 text-primary">{task.subject}</span>

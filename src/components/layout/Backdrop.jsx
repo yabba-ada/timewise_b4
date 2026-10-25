@@ -1,35 +1,60 @@
+// Cygnus the Swan (the Northern Cross): Deneb at the tail, Sadr at the centre,
+// Gienah and Delta as the wing tips, then the head of Albireo.
+const CYGNUS = [
+  { id: "deneb", x: 63, y: 13, r: 2, d: 4.5, delay: 0 },
+  { id: "sadr", x: 44, y: 43, r: 1.4, d: 5.5, delay: 1.2 },
+  { id: "gienah", x: 19, y: 51, r: 1.2, d: 6, delay: 2.4 },
+  { id: "delta", x: 72, y: 39, r: 1.2, d: 5, delay: 3.1 },
+  { id: "eta", x: 36, y: 61, r: 0.9, d: 6.5, delay: 4.2 },
+  { id: "albireo", x: 29, y: 75, r: 1.3, d: 5.2, delay: 0.7 },
+];
+
+const LINKS = [
+  ["deneb", "sadr"],
+  ["sadr", "gienah"],
+  ["sadr", "delta"],
+  ["sadr", "eta"],
+  ["eta", "albireo"],
+];
+
+const star = (id) => CYGNUS.find((s) => s.id === id);
+
 const r1 = (n) => Math.round(n * 10) / 10;
-const TONES = ["#e8bcc4", "#f0d1d6", "#dcc0b4", "#e7a9b4"];
-
-const DECOR = Array.from({ length: 16 }, (_, i) => ({
-  left: r1((i * 43.7) % 100),
-  top: r1((i * 61.3 + (i % 5) * 9) % 100),
-  size: 12 + ((i * 5) % 22),
-  delay: r1((i % 7) * 1.1),
-  tone: TONES[i % TONES.length],
-  kind: i % 4 === 0 ? "heart" : "petal",
+const DUST = Array.from({ length: 20 }, (_, i) => ({
+  left: r1((i * 37.9) % 100),
+  top: r1((i * 53.7 + (i % 6) * 8) % 100),
+  size: 2 + (i % 3),
+  d: 6 + (i % 5),
+  delay: r1((i % 8) * 0.8),
 }));
-
-const HEART = "M12 20.6S4.4 15.7 2.6 11.5A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 9.4 5.5C19.6 15.7 12 20.6 12 20.6Z";
-const PETAL = "M12 1.8c3.9 4.2 5.9 7.6 5.9 11.1a5.9 5.9 0 1 1-11.8 0C6.1 9.4 8.1 6 12 1.8Z";
 
 export default function Backdrop() {
   return (
     <div className="soft-bg pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden>
-      <div className="lace absolute inset-0 opacity-60" />
-      {DECOR.map((d, i) => (
+      <div className="float absolute -left-28 top-8 h-72 w-72 rounded-full bg-rose-200/40 blur-3xl" />
+      <div className="float absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-pink-100/50 blur-3xl" style={{ animationDelay: "2s" }} />
+
+      {DUST.map((d, i) => (
         <span
           key={i}
-          className="sway absolute block"
-          style={{ left: `${d.left}%`, top: `${d.top}%`, width: d.size, height: d.size, "--delay": `${d.delay}s` }}
-        >
-          <svg viewBox="0 0 24 24" className="h-full w-full">
-            <path d={d.kind === "heart" ? HEART : PETAL} fill={d.tone} opacity="0.5" />
-          </svg>
-        </span>
+          className="dust-twinkle absolute rounded-full bg-rose-300"
+          style={{ left: `${d.left}%`, top: `${d.top}%`, width: d.size, height: d.size, "--d": `${d.d}s`, "--delay": `${d.delay}s` }}
+        />
       ))}
-      <div className="float absolute -left-28 top-10 h-72 w-72 rounded-full bg-rose-200/35 blur-3xl" />
-      <div className="float absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-amber-100/45 blur-3xl" style={{ animationDelay: "2s" }} />
+
+      <div className="constellation absolute right-[2%] top-[6%] aspect-square w-[62vw] max-w-[720px] opacity-80 sm:w-[68vh] sm:opacity-100">
+        <svg viewBox="0 0 100 100" className="h-full w-full overflow-visible">
+          {LINKS.map(([a, b], i) => (
+            <line key={i} x1={star(a).x} y1={star(a).y} x2={star(b).x} y2={star(b).y} className="constellation-line" />
+          ))}
+          {CYGNUS.map((s) => (
+            <g key={s.id}>
+              <circle cx={s.x} cy={s.y} r={s.r * 2.6} fill="rgba(184,122,124,0.10)" />
+              <circle cx={s.x} cy={s.y} r={s.r} className="star-shine" style={{ "--d": `${s.d}s`, "--delay": `${s.delay}s` }} />
+            </g>
+          ))}
+        </svg>
+      </div>
     </div>
   );
 }

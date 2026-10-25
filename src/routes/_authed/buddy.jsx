@@ -11,7 +11,7 @@ export const Route = createFileRoute("/_authed/buddy")({
 function BuddyPage() {
   return (
     <div>
-      <PageHeader title="Time Buddy" subtitle="A soft place to think out loud about your schedule." />
+      <PageHeader title="Time Buddy" subtitle="Your study coach — ask me anything about your plan." />
       <BuddyChat />
     </div>
   );

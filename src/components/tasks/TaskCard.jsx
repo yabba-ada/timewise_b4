@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check, Clock, Heart, Pencil, Play, Trash2, Wand2 } from "lucide-react";
+import { Check, Clock, Pencil, Play, Target, Trash2, Wand2 } from "lucide-react";
 import { dueLabel } from "@/lib/recommend";
 
 const PRIORITY_STYLE = {
@@ -30,7 +30,7 @@ export default function TaskCard({ task, estimate, goalTitle, onStart, onComplet
             {!done && <span className="text-pink-900/50">{dueLabel(task.due_date)}</span>}
             {goalTitle && (
               <span className="flex items-center gap-1 text-rose-950/50">
-                <Heart className="h-3 w-3 text-rose-300" fill="currentColor" strokeWidth={1.25} />
+                <Target className="h-3 w-3 text-rose-300" strokeWidth={1.75} />
                 {goalTitle}
               </span>
             )}

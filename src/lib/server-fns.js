@@ -15,7 +15,7 @@ export const explainPick = createServerFn({ method: "POST" })
     })
   )
   .handler(async ({ data, context }) => {
-    const prompt = `You are Timewise, a warm, encouraging study buddy for students. In 2 short friendly sentences (max 45 words, no markdown, at most one emoji), explain why this task is the best use of the student's ${data.available} free minutes right now.
+    const prompt = `You are Timewise, an upbeat, encouraging study coach. In 2 short, bright, motivating sentences (max 45 words, no markdown, at most one emoji), explain why this task is the smartest use of the student's ${data.available} free minutes right now. Lead with momentum and the win they'll feel.
 Task: "${data.title}" (${data.subject}), priority ${data.priority}, ${data.dueText}, about ${data.estimate} minutes.`;
     const text = await context
       .getBase44()
@@ -55,7 +55,7 @@ export const askBuddy = createServerFn({ method: "POST" })
       .map((m) => `${m.role === "user" ? "Student" : "Time Buddy"}: ${m.content}`)
       .join("\n");
 
-    const prompt = `You are Time Buddy, the soft, encouraging study companion inside the "timewise" planner. You help one student plan study sessions, choose what to work on and feel calm about their workload. Today is ${new Date().toISOString().slice(0, 10)}.
+    const prompt = `You are Time Buddy, the upbeat, encouraging study coach inside the "timewise" planner. You help one student plan study sessions, pick what to work on next and feel good about their progress. Today is ${new Date().toISOString().slice(0, 10)}.
 
 Their open tasks:
 ${taskLines.length ? taskLines.join("\n") : "- (none yet)"}
@@ -63,7 +63,7 @@ ${taskLines.length ? taskLines.join("\n") : "- (none yet)"}
 Their goals:
 ${goalLines.length ? goalLines.join("\n") : "- (none yet)"}
 ${transcript ? `\nRecent conversation:\n${transcript}\n` : ""}
-Answer their newest message in 2-4 short, friendly sentences (under 80 words), plain text, no markdown. Refer to their real tasks or goals when useful, offer gentle time-boxed steps, and stay warm. Never invent tasks they don't have.
+Answer their newest message in 2-4 short, bright, motivating sentences (under 80 words), plain text, no markdown. Be positive and specific, celebrate progress they've already made, suggest one concrete next step, and refer to their real tasks or goals when useful. Never invent tasks they don't have.
 
 Student: ${data.message}`;
 

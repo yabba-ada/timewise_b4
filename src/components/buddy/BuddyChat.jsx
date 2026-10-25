@@ -9,7 +9,7 @@ import SuggestionChips from "@/components/buddy/SuggestionChips";
 
 const GREETING = {
   role: "assistant",
-  content: "Hello love, I'm your Time Buddy. Tell me what's on your plate and we'll find the softest way through it — I can see your tasks and goals, so ask me anything about your studying.",
+  content: "Hi! I'm your Time Buddy. Tell me what you're working on and I'll help you plan it out — I can see your tasks and goals, so ask me anything.",
 };
 
 export default function BuddyChat() {
@@ -34,7 +34,7 @@ export default function BuddyChat() {
       const res = await ask({ data: { message, history } });
       setMessages((m) => [...m, { role: "assistant", content: res.text }]);
     } catch {
-      setMessages((m) => [...m, { role: "assistant", content: "I couldn't reach my notebook just now — try once more in a moment." }]);
+      setMessages((m) => [...m, { role: "assistant", content: "I couldn't reach my notes just now — try again in a moment." }]);
     } finally {
       setThinking(false);
     }

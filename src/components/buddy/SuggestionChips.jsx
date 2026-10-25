@@ -1,8 +1,8 @@
 const IDEAS = [
   "What should I do with my next free hour?",
-  "I feel overwhelmed — help me pick one thing",
+  "What's the most important thing right now?",
   "How should I prep for my next test?",
-  "Make me a gentle plan for tonight",
+  "Make me a plan for tonight",
 ];
 
 export default function SuggestionChips({ onPick, disabled }) {

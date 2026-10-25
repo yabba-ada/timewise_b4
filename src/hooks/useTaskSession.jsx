@@ -17,7 +17,7 @@ export default function useTaskSession(onChange) {
       completed_at: new Date().toISOString(),
     });
     confetti({ particleCount: 110, spread: 80, origin: { y: 0.7 }, shapes: ["circle"], colors: ["#e8bcc4", "#f0d1d6", "#dcc0b4", "#e7a9b4", "#f7e3e6"] });
-    toast.success("Task complete — so proud of you ♡");
+    toast.success("Task complete — you're on a roll!");
     setLog(null);
     onChange();
   }
