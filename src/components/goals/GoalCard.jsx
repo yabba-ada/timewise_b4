@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Trash2 } from "lucide-react";
+import { Heart, Trash2 } from "lucide-react";
 
 export default function GoalCard({ goal, tasks, onDelete }) {
   const linked = tasks.filter((t) => t.goal_id === goal.id);
@@ -10,8 +10,11 @@ export default function GoalCard({ goal, tasks, onDelete }) {
     <motion.div layout initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} whileHover={{ y: -3 }} className="glass rounded-3xl p-5">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <span className="rounded-full bg-purple-100 px-2.5 py-1 text-xs font-semibold text-purple-700">{goal.term === "long" ? "Long-term" : "Short-term"}</span>
-          <h3 className="mt-2 text-lg font-semibold">★ {goal.title}</h3>
+          <span className="rounded-full bg-rose-100 px-2.5 py-1 text-xs font-semibold text-primary">{goal.term === "long" ? "Long-term" : "Short-term"}</span>
+          <h3 className="mt-2 flex items-center gap-2 text-lg font-semibold">
+            <Heart className="h-4 w-4 shrink-0 text-rose-300" fill="currentColor" strokeWidth={1.25} />
+            {goal.title}
+          </h3>
           {goal.description && <p className="text-sm text-pink-900/60">{goal.description}</p>}
           {goal.target_date && <p className="mt-1 text-xs text-pink-900/50">Target: {goal.target_date}</p>}
         </div>

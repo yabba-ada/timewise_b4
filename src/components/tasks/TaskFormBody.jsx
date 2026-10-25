@@ -75,7 +75,7 @@ export default function TaskFormBody({ task, goals, onSubmit }) {
       </div>
       <Pick label="Linked goal" value={f.goal_id} onChange={set("goal_id")} options={[["none", "No goal"], ...goals.map((g) => [g.id, g.title])]} />
       <Button type="submit" disabled={saving || !f.title.trim()} className="btn-glow h-11 w-full rounded-2xl text-white">
-        {saving ? "Saving..." : task ? "Save changes" : "Add task ✦"}
+        {saving ? "Saving..." : task ? "Save changes" : "Add task ♡"}
       </Button>
     </form>
   );

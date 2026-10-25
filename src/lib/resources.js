@@ -1,12 +1,13 @@
+// Subjects carry no emoji: each one is drawn as a thin-stroke rose icon in SubjectIcon.jsx.
 export const SUBJECTS = [
-  { key: "math", name: "Math", emoji: "➗" },
-  { key: "chemistry", name: "Chemistry", emoji: "🧪" },
-  { key: "physics", name: "Physics", emoji: "🪐" },
-  { key: "biology", name: "Biology", emoji: "🌱" },
-  { key: "english", name: "English", emoji: "📖" },
-  { key: "history", name: "History", emoji: "🏛️" },
-  { key: "language", name: "Language", emoji: "🌍" },
-  { key: "cs", name: "CS", emoji: "💻" },
+  { key: "math", name: "Math" },
+  { key: "chemistry", name: "Chemistry" },
+  { key: "physics", name: "Physics" },
+  { key: "biology", name: "Biology" },
+  { key: "english", name: "English" },
+  { key: "history", name: "History" },
+  { key: "language", name: "Language" },
+  { key: "cs", name: "CS" },
 ];
 
 const yt = (q) => `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;

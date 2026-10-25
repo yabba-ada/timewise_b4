@@ -30,14 +30,14 @@ export default function FocusTimer({ task, onClose, onFinish }) {
       <DialogContent className="rounded-3xl text-center">
         <DialogHeader>
           <DialogTitle className="text-center">{task?.title}</DialogTitle>
-          <DialogDescription className="text-center">Stay with this one small step ✦</DialogDescription>
+          <DialogDescription className="text-center">Stay with this one small step ♡</DialogDescription>
         </DialogHeader>
         <div className="relative mx-auto h-56 w-56 float">
           <svg viewBox="0 0 200 200" className="h-full w-full -rotate-90">
             <defs>
               <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#f472b6" />
-                <stop offset="100%" stopColor="#c084fc" />
+                <stop offset="0%" stopColor="#d9a2ad" />
+                <stop offset="100%" stopColor="#b98ba0" />
               </linearGradient>
             </defs>
             <circle cx="100" cy="100" r="90" fill="none" stroke="#fce7f3" strokeWidth="12" />
@@ -54,7 +54,7 @@ export default function FocusTimer({ task, onClose, onFinish }) {
             {running ? "Pause" : "Resume"}
           </Button>
           <Button onClick={() => onFinish(Math.max(1, Math.round(secs / 60)))} className="btn-glow h-11 rounded-2xl text-white">
-            Finish ★
+            Finish ♡
           </Button>
         </div>
       </DialogContent>

@@ -22,7 +22,7 @@ export default function LogTimeDialog({ log, onSave, onClose }) {
     <Dialog open={!!log} onOpenChange={(o) => !o && onClose()}>
       <DialogContent className="rounded-3xl">
         <DialogHeader>
-          <DialogTitle>How long did it really take? ✦</DialogTitle>
+          <DialogTitle>How long did it really take?</DialogTitle>
           <DialogDescription>
             "{log?.task.title}" — your answer helps Moment give smarter time estimates next time.
           </DialogDescription>
@@ -30,7 +30,7 @@ export default function LogTimeDialog({ log, onSave, onClose }) {
         <form onSubmit={submit} className="space-y-4">
           <Input type="number" min="1" value={minutes} onChange={(e) => setMinutes(e.target.value)} className="h-12 rounded-2xl text-center text-xl" autoFocus />
           <Button type="submit" disabled={saving} className="btn-glow h-11 w-full rounded-2xl text-white">
-            {saving ? "Saving..." : "Mark complete ★"}
+            {saving ? "Saving..." : "Mark complete ♡"}
           </Button>
         </form>
       </DialogContent>

@@ -19,7 +19,7 @@ function HomePage() {
   return (
     <div>
       <div className="mb-6">
-        <p className="text-sm font-semibold text-pink-500">✦ the sky's the limit</p>
+        <p className="text-sm font-semibold text-primary">❀ a soft place to plan</p>
         <h1 className="text-4xl font-semibold text-shimmer">Hi{name ? `, ${name}` : ""}!</h1>
         <p className="mt-1 text-pink-900/60">Even the smallest shard of time can move you toward something bigger.</p>
       </div>

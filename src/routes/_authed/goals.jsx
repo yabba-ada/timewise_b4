@@ -24,7 +24,7 @@ function GoalsPage() {
 
   async function add(data) {
     await base44.entities.Goal.create(data);
-    toast.success("Goal added ★");
+    toast.success("Goal added ♡");
     setOpen(false);
     reload();
   }
@@ -36,13 +36,13 @@ function GoalsPage() {
 
   return (
     <div>
-      <PageHeader title="Goals" subtitle="Every task is a step toward a star.">
+      <PageHeader title="Goals" subtitle="Little by little, you're getting somewhere.">
         <Button onClick={() => setOpen(true)} className="btn-glow rounded-2xl text-white"><Plus className="mr-1 h-4 w-4" /> New</Button>
       </PageHeader>
       {loading ? (
         <div className="glass h-32 animate-pulse rounded-3xl" />
       ) : goals.length === 0 ? (
-        <EmptyState title="Pick your first star" text="Add a short- or long-term goal, then link tasks to watch your progress glow." />
+        <EmptyState title="Where are you headed?" text="Add a short- or long-term goal, then link tasks to watch your progress bloom." />
       ) : (
         <div className="space-y-4">
           <AnimatePresence>

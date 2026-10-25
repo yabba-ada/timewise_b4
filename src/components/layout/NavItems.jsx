@@ -1,12 +1,13 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { BookOpen, ListChecks, Sparkles, Target } from "lucide-react";
+import { BookOpen, House, ListChecks, MessageCircle, Target } from "lucide-react";
 
 const ITEMS = [
-  { to: "/", label: "Home", Icon: Sparkles },
+  { to: "/", label: "Home", Icon: House },
   { to: "/tasks", label: "Tasks", Icon: ListChecks },
   { to: "/goals", label: "Goals", Icon: Target },
-  { to: "/resources", label: "Resources", Icon: BookOpen },
+  { to: "/buddy", label: "Buddy", Icon: MessageCircle },
+  { to: "/resources", label: "Learn", Icon: BookOpen },
 ];
 
 export default function NavItems({ id, vertical }) {
@@ -21,7 +22,7 @@ export default function NavItems({ id, vertical }) {
             to={to}
             className={`relative flex items-center gap-3 rounded-2xl px-4 py-2.5 text-sm font-semibold transition-colors ${
               vertical ? "" : "flex-col gap-0.5 px-3 py-1.5 text-[11px]"
-            } ${active ? "text-white" : "text-pink-900/60 hover:text-pink-600"}`}
+            } ${active ? "text-white" : "text-rose-950/55 hover:text-primary"}`}
           >
             {active && (
               <motion.span
@@ -30,7 +31,7 @@ export default function NavItems({ id, vertical }) {
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
-            <Icon className="relative z-10 h-5 w-5" />
+            <Icon className="relative z-10 h-5 w-5" strokeWidth={1.75} />
             <span className="relative z-10">{label}</span>
           </Link>
         );
