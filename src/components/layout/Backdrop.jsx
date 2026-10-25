@@ -55,17 +55,17 @@ export default function Backdrop() {
       <ConstellationField
         index={assign[1]}
         linesShown={linesShown}
-        className="left-[2%] top-[8%] hidden aspect-square w-[24vh] max-w-[240px] opacity-40 lg:block"
+        className="left-[2%] top-[8%] hidden aspect-square w-[24vh] max-w-[240px] opacity-65 lg:block"
       />
       <ConstellationField
         index={assign[2]}
         linesShown={linesShown}
-        className="bottom-[6%] left-[4%] hidden aspect-square w-[30vh] max-w-[300px] opacity-50 lg:block"
+        className="bottom-[6%] left-[4%] hidden aspect-square w-[30vh] max-w-[300px] opacity-75 lg:block"
       />
       <ConstellationField
         index={assign[3]}
         linesShown={linesShown}
-        className="bottom-[4%] right-[6%] hidden aspect-square w-[26vh] max-w-[260px] opacity-45 lg:block"
+        className="bottom-[4%] right-[6%] hidden aspect-square w-[26vh] max-w-[260px] opacity-70 lg:block"
       />
     </div>
   );
