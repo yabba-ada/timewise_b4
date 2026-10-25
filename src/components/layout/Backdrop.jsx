@@ -1,26 +1,7 @@
-// Cygnus the Swan (the Northern Cross): Deneb at the tail, Sadr at the centre,
-// Gienah and Delta as the wing tips, then the head of Albireo.
-const CYGNUS = [
-  { id: "deneb", x: 63, y: 13, r: 2, d: 4.5, delay: 0 },
-  { id: "sadr", x: 44, y: 43, r: 1.4, d: 5.5, delay: 1.2 },
-  { id: "gienah", x: 19, y: 51, r: 1.2, d: 6, delay: 2.4 },
-  { id: "delta", x: 72, y: 39, r: 1.2, d: 5, delay: 3.1 },
-  { id: "eta", x: 36, y: 61, r: 0.9, d: 6.5, delay: 4.2 },
-  { id: "albireo", x: 29, y: 75, r: 1.3, d: 5.2, delay: 0.7 },
-];
-
-const LINKS = [
-  ["deneb", "sadr"],
-  ["sadr", "gienah"],
-  ["sadr", "delta"],
-  ["sadr", "eta"],
-  ["eta", "albireo"],
-];
-
-const star = (id) => CYGNUS.find((s) => s.id === id);
+import ConstellationField from "@/components/layout/ConstellationField";
 
 const r1 = (n) => Math.round(n * 10) / 10;
-const DUST = Array.from({ length: 20 }, (_, i) => ({
+const DUST = Array.from({ length: 26 }, (_, i) => ({
   left: r1((i * 37.9) % 100),
   top: r1((i * 53.7 + (i % 6) * 8) % 100),
   size: 2 + (i % 3),
@@ -42,19 +23,8 @@ export default function Backdrop() {
         />
       ))}
 
-      <div className="constellation absolute right-[2%] top-[6%] aspect-square w-[62vw] max-w-[720px] opacity-80 sm:w-[68vh] sm:opacity-100">
-        <svg viewBox="0 0 100 100" className="h-full w-full overflow-visible">
-          {LINKS.map(([a, b], i) => (
-            <line key={i} x1={star(a).x} y1={star(a).y} x2={star(b).x} y2={star(b).y} className="constellation-line" />
-          ))}
-          {CYGNUS.map((s) => (
-            <g key={s.id}>
-              <circle cx={s.x} cy={s.y} r={s.r * 2.6} fill="rgba(184,122,124,0.10)" />
-              <circle cx={s.x} cy={s.y} r={s.r} className="star-shine" style={{ "--d": `${s.d}s`, "--delay": `${s.delay}s` }} />
-            </g>
-          ))}
-        </svg>
-      </div>
+      <ConstellationField className="right-[2%] top-[6%] aspect-square w-[62vw] max-w-[720px] opacity-80 sm:w-[68vh] sm:opacity-100" />
+      <ConstellationField start={2} className="bottom-[5%] left-[1%] hidden aspect-square w-[34vh] max-w-[360px] opacity-50 lg:block" />
     </div>
   );
 }

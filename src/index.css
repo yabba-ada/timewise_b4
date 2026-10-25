@@ -83,8 +83,8 @@
   70% { opacity: 1; transform: scale(2.1); filter: drop-shadow(0 0 3px rgba(184, 122, 124, 0.9)); }
 }
 @keyframes dusty {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.75; }
+  0%, 100% { opacity: 0.15; transform: translate3d(0, 0, 0); }
+  50% { opacity: 0.75; transform: translate3d(6px, -10px, 0); }
 }
 
 .soft-bg {
