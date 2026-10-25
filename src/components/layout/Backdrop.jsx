@@ -15,10 +15,10 @@ const DUST = Array.from({ length: 26 }, (_, i) => ({
 }));
 
 // One shared choreography: every field morphs on the same beat, and the
-// rotation hands each field the next one's shape, so the four fields on screen
+// rotation hands each field the next one's shape, so the five fields on screen
 // never show the same constellation at the same time.
 export default function Backdrop() {
-  const [assign, setAssign] = useState([0, 1, 2, 3]);
+  const [assign, setAssign] = useState([0, 1, 2, 3, 4]);
   const [linesShown, setLinesShown] = useState(true);
   const timers = useRef([]);
 
@@ -60,12 +60,17 @@ export default function Backdrop() {
       <ConstellationField
         index={assign[2]}
         linesShown={linesShown}
-        className="bottom-[6%] left-[4%] hidden aspect-square w-[30vh] max-w-[300px] opacity-75 lg:block"
+        className="left-[1%] top-[40%] hidden aspect-square w-[26vh] max-w-[270px] opacity-65 lg:block"
       />
       <ConstellationField
         index={assign[3]}
         linesShown={linesShown}
         className="bottom-[4%] right-[6%] hidden aspect-square w-[26vh] max-w-[260px] opacity-70 lg:block"
+      />
+      <ConstellationField
+        index={assign[4]}
+        linesShown={linesShown}
+        className="bottom-[-6%] left-[-4%] hidden aspect-square w-[38vh] max-w-[400px] opacity-85 md:block"
       />
     </div>
   );

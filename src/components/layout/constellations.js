@@ -73,6 +73,21 @@ const RAW = [
     ],
     links: [[7, 0], [7, 1], [0, 4], [1, 2], [4, 3], [3, 2], [4, 5], [2, 6]],
   },
+  {
+    // The Queen: a bright zig-zag W across the sky.
+    name: "Cassiopeia",
+    stars: [
+      { x: 10, y: 34 },
+      { x: 24, y: 58 },
+      { x: 48, y: 30 },
+      { x: 62, y: 54 },
+      { x: 86, y: 28 },
+      { x: 50, y: 60 },
+      { x: 70, y: 40 },
+      { x: 35, y: 30 },
+    ],
+    links: [[0, 1], [1, 2], [2, 3], [3, 4]],
+  },
 ];
 
 export const CONSTELLATIONS = RAW.map((c) => ({
