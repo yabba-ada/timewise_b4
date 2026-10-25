@@ -1,4 +1,9 @@
+import { useEffect, useRef, useState } from "react";
 import ConstellationField from "@/components/layout/ConstellationField";
+
+const HOLD_MS = 9500;
+const MORPH_AT = 600;
+const LINES_BACK_AT = 4000;
 
 const r1 = (n) => Math.round(n * 10) / 10;
 const DUST = Array.from({ length: 26 }, (_, i) => ({
@@ -9,7 +14,26 @@ const DUST = Array.from({ length: 26 }, (_, i) => ({
   delay: r1((i % 8) * 0.8),
 }));
 
+// One shared choreography: every field morphs on the same beat, and the
+// rotation hands each field the next one's shape, so the four fields on screen
+// never show the same constellation at the same time.
 export default function Backdrop() {
+  const [assign, setAssign] = useState([0, 1, 2, 3]);
+  const [linesShown, setLinesShown] = useState(true);
+  const timers = useRef([]);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setLinesShown(false);
+      timers.current.push(window.setTimeout(() => setAssign((a) => [...a.slice(1), a[0]]), MORPH_AT));
+      timers.current.push(window.setTimeout(() => setLinesShown(true), LINES_BACK_AT));
+    }, HOLD_MS);
+    return () => {
+      window.clearInterval(id);
+      timers.current.forEach(window.clearTimeout);
+    };
+  }, []);
+
   return (
     <div className="soft-bg pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden>
       <div className="float absolute -left-28 top-8 h-72 w-72 rounded-full bg-rose-200/40 blur-3xl" />
@@ -23,8 +47,26 @@ export default function Backdrop() {
         />
       ))}
 
-      <ConstellationField className="right-[2%] top-[6%] aspect-square w-[62vw] max-w-[720px] opacity-80 sm:w-[68vh] sm:opacity-100" />
-      <ConstellationField start={2} className="bottom-[5%] left-[1%] hidden aspect-square w-[34vh] max-w-[360px] opacity-50 lg:block" />
+      <ConstellationField
+        index={assign[0]}
+        linesShown={linesShown}
+        className="right-[-2%] top-[2%] aspect-square w-[80vw] max-w-[960px] opacity-80 sm:w-[88vh] sm:opacity-100"
+      />
+      <ConstellationField
+        index={assign[1]}
+        linesShown={linesShown}
+        className="left-[2%] top-[8%] hidden aspect-square w-[24vh] max-w-[240px] opacity-40 lg:block"
+      />
+      <ConstellationField
+        index={assign[2]}
+        linesShown={linesShown}
+        className="bottom-[6%] left-[4%] hidden aspect-square w-[30vh] max-w-[300px] opacity-50 lg:block"
+      />
+      <ConstellationField
+        index={assign[3]}
+        linesShown={linesShown}
+        className="bottom-[4%] right-[6%] hidden aspect-square w-[26vh] max-w-[260px] opacity-45 lg:block"
+      />
     </div>
   );
 }

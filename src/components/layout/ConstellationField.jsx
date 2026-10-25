@@ -1,31 +1,12 @@
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { CONSTELLATIONS, MAX_LINKS, POOL } from "@/components/layout/constellations";
 
-const HOLD_MS = 9500;
-const MORPH_AT = 600;
-const LINES_BACK_AT = 4000;
 const TRAVEL = { duration: 3.4, ease: "easeInOut" };
 
-export default function ConstellationField({ className = "", start = 0 }) {
-  const [index, setIndex] = useState(start);
-  const [linesShown, setLinesShown] = useState(true);
-  const timers = useRef([]);
-
-  // Fade the lines out, let the stars glide to the next shape, draw it back in.
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setLinesShown(false);
-      timers.current.push(window.setTimeout(() => setIndex((i) => (i + 1) % CONSTELLATIONS.length), MORPH_AT));
-      timers.current.push(window.setTimeout(() => setLinesShown(true), LINES_BACK_AT));
-    }, HOLD_MS);
-    return () => {
-      window.clearInterval(id);
-      timers.current.forEach(window.clearTimeout);
-    };
-  }, []);
-
-  const shape = CONSTELLATIONS[index];
+// A single morphing star field: eight stars glide into the shape at `index`,
+// while `linesShown` fades the connecting lines in and out around the flight.
+export default function ConstellationField({ className = "", index = 0, linesShown = true }) {
+  const shape = CONSTELLATIONS[index % CONSTELLATIONS.length];
 
   return (
     <div className={`constellation pointer-events-none absolute ${className}`} aria-hidden>
