@@ -70,7 +70,7 @@ export default function Backdrop() {
       <ConstellationField
         index={assign[4]}
         linesShown={linesShown}
-        className="bottom-[-6%] left-[-4%] hidden aspect-square w-[38vh] max-w-[400px] opacity-85 md:block"
+        className="bottom-[-6%] right-[calc(100%_-_1rem)] hidden aspect-square w-[38vh] max-w-[400px] opacity-85 md:block"
       />
     </div>
   );
